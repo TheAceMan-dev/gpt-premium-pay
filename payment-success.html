@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Оплата прошла успешно</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0f172a;color:#e2e8f0;display:flex;min-height:100vh;align-items:center;justify-content:center}
+    .card{max-width:560px;width:92%;background:#111827;border:1px solid #1f2937;border-radius:18px;padding:28px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .ok{font-size:68px;line-height:1;margin-bottom:10px}
+    h1{margin:8px 0 6px;font-size:24px}
+    p{opacity:.9;margin:8px 0 18px}
+    .info{font-size:14px;opacity:.8}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:0;background:#22c55e;color:#0b1419;font-weight:700;text-decoration:none}
+    .btn:focus,.btn:hover{filter:brightness(1.05)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    code{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:2px 6px}
+  </style>
+  <meta http-equiv="refresh" content="6;url=https://t.me/HalloNovaBot" />
+</head>
+<body>
+  <div class="card">
+    <div class="ok">✅</div>
+    <h1>Оплата прошла успешно</h1>
+    <p>Спасибо! Доступ будет активирован автоматически в Telegram-боте.</p>
+
+    <div class="row">
+      <a class="btn" href="https://t.me/HalloNovaBot">Вернуться в бота</a>
+    </div>
+
+    <p class="info">
+      Номер заказа: <code id="order">—</code> · Сумма: <code id="amount">—</code>
+    </p>
+    <p class="info">Если не перенаправило автоматически за 6 секунд — нажмите кнопку выше.</p>
+  </div>
+
+  <script>
+    const qs = new URLSearchParams(location.search);
+    document.getElementById('order').textContent  = qs.get('o')   || qs.get('MERCHANT_ORDER_ID') || '—';
+    document.getElementById('amount').textContent = qs.get('oa')  || qs.get('AMOUNT') || '—';
+  </script>
+</body>
+</html>
